@@ -1,5 +1,5 @@
 import { ShopService } from 'src/Services/shop.service';
-import { Controller, Get,Request } from '@nestjs/common';
+import { Body, Controller, Get,Post,Request } from '@nestjs/common';
 import { setAuthorizationHeader } from 'src/Services/api';
 
 
@@ -12,5 +12,12 @@ export class ShopController {
     
     setAuthorizationHeader(req.headers['authorization'])
     return await this.shopService.getAll();
+  }
+  @Post('shop/period')
+  async GetShopPeriod(@Request() req, @Body() filterDto) {
+    
+    setAuthorizationHeader(req.headers['authorization'])
+    console.log(filterDto)
+    return await this.shopService.getShopPeriod(filterDto);
   }
 }

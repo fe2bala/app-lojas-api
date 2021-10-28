@@ -35,7 +35,7 @@ export class ScheduleService {
     async getShopPeriod(filter) {
         
         return api.post(
-        `agendamento`, filter).then(response=> {
+        `lojas/periodos`, filter).then(response=> {
             
             return response.data;
         }).catch(error=> {

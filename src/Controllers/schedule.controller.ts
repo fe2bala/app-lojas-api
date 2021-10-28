@@ -20,4 +20,5 @@ export class ScheduleController {
     setAuthorizationHeader(req.headers['authorization'])
     return await this.scheduleService.getStatus();
   }
+  
 }
