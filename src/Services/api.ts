@@ -3,7 +3,6 @@ import * as https  from 'https'
 
 const api = axios.create({
     baseURL: 'https://tecnica.homolog.ituran.com.br/api/',
-    timeout: 10000,
     httpsAgent: new https.Agent({  
         rejectUnauthorized: false
       })
