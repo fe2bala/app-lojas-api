@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from 'src/app.controller';
 import { AppService } from 'src/app.service';
-import { AuthController } from 'src/controllers/auth.controller'
+import { AuthController } from 'src/Controllers/auth.controller'
 import { ShopController } from 'src/Controllers/shop.controller';
 import { ScheduleController } from 'src/Controllers/schedule.controller';
 import { AuthService } from 'src/Services/auth.service';
