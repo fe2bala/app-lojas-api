@@ -1,5 +1,5 @@
 import { ScheduleService } from 'src/Services/schedule.service';
-import { Body, Controller, Request, Post } from '@nestjs/common';
+import { Body, Controller, Request, Post, Get } from '@nestjs/common';
 import { setAuthorizationHeader } from 'src/Services/api';
 
 
@@ -14,7 +14,7 @@ export class ScheduleController {
     console.log(filterDto)
     return await this.scheduleService.search(filterDto);
   }
-  @Post('schedule/status')
+  @Get('schedule/status')
   async GetStatus(@Request() req) {
     
     setAuthorizationHeader(req.headers['authorization'])
