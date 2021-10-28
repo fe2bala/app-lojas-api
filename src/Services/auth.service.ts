@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
 import { JSEncrypt } from 'nodejs-jsencrypt';
-import api from './api';
+import api from 'src/Services/api';
 
 
 @Injectable()

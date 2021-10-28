@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { AuthController } from './controllers/auth.controller'
-import { ShopController } from './Controllers/shop.controller';
-import { ScheduleController } from './Controllers/schedule.controller';
-import { AuthService } from './Services/auth.service';
-import { ShopService } from './Services/shop.service';
-import { ScheduleService } from './Services/schedule.service';
+import { AppController } from 'src/app.controller';
+import { AppService } from 'src/app.service';
+import { AuthController } from 'src/controllers/auth.controller'
+import { ShopController } from 'src/Controllers/shop.controller';
+import { ScheduleController } from 'src/Controllers/schedule.controller';
+import { AuthService } from 'src/Services/auth.service';
+import { ShopService } from 'src/Services/shop.service';
+import { ScheduleService } from 'src/Services/schedule.service';
 
 @Module({
   imports: [],

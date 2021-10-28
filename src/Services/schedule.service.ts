@@ -1,6 +1,6 @@
 import { response } from 'express';
 import { Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
-import api from './api';
+import api from 'src/Services/api';
 
 
 
