@@ -14,4 +14,10 @@ export class ScheduleController {
     console.log(filterDto)
     return await this.scheduleService.search(filterDto);
   }
+  @Post('schedule/status')
+  async GetStatus(@Request() req) {
+    
+    setAuthorizationHeader(req.headers['authorization'])
+    return await this.scheduleService.getStatus();
+  }
 }

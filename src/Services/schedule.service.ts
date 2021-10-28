@@ -11,8 +11,6 @@ export class ScheduleService {
         
         return api.post(
         `agendamento`, filter).then(response=> {
-            console.log('response:')
-            console.log(response.data)
             
             return response.data;
         }).catch(error=> {
@@ -22,6 +20,26 @@ export class ScheduleService {
                 throw new UnauthorizedException();
             }
             throw new InternalServerErrorException();
+        });
+    }
+    async getStatus() {
+        
+        return api.get(
+        `agendamento/status`).then(response=> {
+            
+            return response.data;
+        }).catch(error=> {
+            throw error;
+        });
+    }
+    async getShopPeriod(filter) {
+        
+        return api.post(
+        `agendamento`, filter).then(response=> {
+            
+            return response.data;
+        }).catch(error=> {
+            throw error;
         });
     }
       
