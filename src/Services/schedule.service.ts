@@ -32,15 +32,6 @@ export class ScheduleService {
             throw error;
         });
     }
-    async getShopPeriod(filter) {
-        
-        return api.post(
-        `lojas/periodos`, filter).then(response=> {
-            
-            return response.data;
-        }).catch(error=> {
-            throw error;
-        });
-    }
+    
       
 }
