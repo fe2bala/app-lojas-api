@@ -1,3 +1,4 @@
+import { BadRequestException, InternalServerErrorException, MethodNotAllowedException, UnauthorizedException } from "@nestjs/common";
 import axios from "axios"
 import * as https  from 'https'
 
@@ -7,6 +8,46 @@ const api = axios.create({
         rejectUnauthorized: false
       })
 });
+api.interceptors.response.use((response) => {
+    // Do something with response data
+    return response;
+  },(error) => {
+    // Do something with response error
+    const errorJson= error.toJSON()
+    console.log(errorJson)
+    
+    // You can even test for a response code 
+    // and try a new request before rejecting the promise
+    let errorMessage = '';
+    if (errorJson.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${errorJson.error.message}`;
+    } else {
+      // server-side error
+      console.log(`Error Code: ${errorJson.status}\nMessage: ${errorJson.message}\nError: ${errorJson.error}`);
+      errorMessage = "Falha de conexão com o servidor";
+    }
+    if ([401].indexOf(errorJson.status) !== -1) {
+        throw new UnauthorizedException("Acesso não autorizado.");
+    }
+  
+    if ([400].indexOf(errorJson.status) !== -1) {
+      throw new BadRequestException("Erro na requisição.");
+    }
+  
+    if ([405].indexOf(errorJson.status) !== -1) {
+      throw new MethodNotAllowedException("Acesso a função não permitido.");
+    }
+  
+    if ([500].indexOf(errorJson.status) !== -1) {
+        errorMessage = "Falha na operação."
+        if (errorJson.error && errorJson.error.length > 0)
+        errorMessage += ` ${errorJson.error}`;
+
+        throw new InternalServerErrorException(errorMessage);
+    }
+    return Promise.reject(error);
+  });
 
 export function setAuthorizationHeader(token: string){
     api.defaults.headers['Authorization'] = `${token}`
