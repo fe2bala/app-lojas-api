@@ -14,7 +14,7 @@ api.interceptors.response.use((response) => {
   },(error) => {
     // Do something with response error
     const errorJson= error.toJSON()
-    console.log(errorJson)
+    console.log(errorJson);
     
     // You can even test for a response code 
     // and try a new request before rejecting the promise
@@ -43,7 +43,7 @@ api.interceptors.response.use((response) => {
 
         throw new InternalServerErrorException(errorMessage);
     }
-    return Promise.reject(error);
+    throw new InternalServerErrorException(error);
   });
 
 export function setAuthorizationHeader(token: string){
