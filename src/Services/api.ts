@@ -43,7 +43,7 @@ api.interceptors.response.use((response) => {
 
         throw new InternalServerErrorException(errorMessage);
     }
-    throw new InternalServerErrorException(errorJson, "Erro no Servidor");
+    throw new InternalServerErrorException("Erro no Servidor");
   });
 
 export function setAuthorizationHeader(token: string){
