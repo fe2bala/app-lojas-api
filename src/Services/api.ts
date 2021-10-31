@@ -13,7 +13,7 @@ api.interceptors.response.use((response) => {
     return response;
   },(error) => {
     // Do something with response error
-    const errorJson= error.toJSON()
+    const errorJson= error.response.toJSON()
     console.log(errorJson);
     
     // You can even test for a response code 
