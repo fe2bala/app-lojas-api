@@ -24,11 +24,7 @@ export class AuthService {
         }).then(response=> {
             return response.data;
         }).catch(error=> {
-            console.log(error.toJSON());
-            if (error?.response?.status == 401) {
-                throw new UnauthorizedException();
-            }
-            throw new InternalServerErrorException();
+            throw error;
         });
     }
       

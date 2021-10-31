@@ -14,12 +14,7 @@ export class ScheduleService {
             
             return response.data;
         }).catch(error=> {
-            console.log('error:')
-            console.log(error?.status)
-            if (error?.response?.status == 401) {
-                throw new UnauthorizedException();
-            }
-            throw new InternalServerErrorException();
+            throw error
         });
     }
     async getStatus() {

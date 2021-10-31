@@ -13,11 +13,7 @@ export class ShopService {
         `lojas`).then(response=> {
             return response.data;
         }).catch(error=> {
-            console.log(error.response)
-            if (error?.response?.status == 401) {
-                throw new UnauthorizedException();
-            }
-            throw new InternalServerErrorException();
+            throw error;
         });
     }
     async getShopPeriod(filter) {
