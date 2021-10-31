@@ -19,10 +19,7 @@ api.interceptors.response.use((response) => {
     // You can even test for a response code 
     // and try a new request before rejecting the promise
     let errorMessage = '';
-    if (errorJson.error instanceof ErrorEvent) {
-      // client-side error
-      errorMessage = `Error: ${errorJson.error.message}`;
-    } else {
+    if (errorJson.description&&errorJson.status&&errorJson.message) {
       // server-side error
       console.log(`Error Code: ${errorJson.status}\nMessage: ${errorJson.message}\nError: ${errorJson.error}`);
       errorMessage = "Falha de conexão com o servidor";
