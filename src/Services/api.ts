@@ -19,11 +19,11 @@ api.interceptors.response.use((response) => {
     // You can even test for a response code 
     // and try a new request before rejecting the promise
     let errorMessage = '';
-    if (errorJson.description && errorJson.status && errorJson.message) {
+    if (errorJson.data && errorJson.data.statusCode && errorJson.data.message) {
       // server-side error
-      console.log(`Error Code: ${errorJson.status}\nMessage: ${errorJson.message}\nError: ${errorJson.error}`);
+      console.log(`Error Code: ${errorJson.data.statusCode}\nMessage: ${errorJson.data.message}\nError: ${errorJson.data.error}`);
       errorMessage = "Falha de conexão com o servidor";
-    }
+    } 
     if ([401].indexOf(errorJson.status) !== -1) {
         throw new UnauthorizedException("Acesso não autorizado.");
     }
